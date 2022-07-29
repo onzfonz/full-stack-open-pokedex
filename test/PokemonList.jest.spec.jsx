@@ -19,7 +19,7 @@ describe('<PokemonList />', () => {
   it('should render items', () => {
     render(
       <BrowserRouter>
-        <PokemonList pokemonList={pokemonList} />
+        <PokemonList pokemonList={pokemonList}/>
       </BrowserRouter>
     )
     expect(screen.getByText('bulbasaur')).toBeVisible()

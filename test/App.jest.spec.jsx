@@ -17,7 +17,7 @@ describe('<App />', () => {
       }
     )
     await act(async () => {
-      render(<App />)
+      render(<App/>)
     })
     expect(axiosMock.get).toHaveBeenCalledTimes(1)
     expect(axiosMock.get).toHaveBeenCalledWith('https://pokeapi.co/api/v2/pokemon/?limit=784')
@@ -26,7 +26,7 @@ describe('<App />', () => {
   it('shows LoadingSpinner', async () => {
     axiosMock.get.mockResolvedValueOnce({})
     await act(async () => {
-      const { getByAltText } = render(<App />)
+      const { getByAltText } = render(<App/>)
       expect(getByAltText('Loading...')).toBeVisible()
     })
   })
@@ -34,7 +34,7 @@ describe('<App />', () => {
   it('shows error', async () => {
     axiosMock.get.mockRejectedValueOnce(new Error())
     await act(async () => {
-      render(<App />)
+      render(<App/>)
     })
     expect(screen.getByTestId('error')).toBeVisible()
   })

@@ -12,10 +12,10 @@ const PokemonPage = ({ previous, next }) => {
   const { data: pokemon, error, isLoading } = useApi(`https://pokeapi.co/api/v2/pokemon/${name}`)
 
   if (isLoading) {
-    return <LoadingSpinner />
+    return <LoadingSpinner/>
   }
   if (error) {
-    return <ErrorMessage error={error} />
+    return <ErrorMessage error={error}/>
   }
 
   const { type } = pokemon.types.find((type) => type.slot === 1)
@@ -35,7 +35,7 @@ const PokemonPage = ({ previous, next }) => {
         {next && <Link to={`/pokemon/${previous.name}`}>Next</Link>}
       </div>
       <div className={`pokemon-page pokemon-type-${type.name}`}>
-        <div className="pokemon-image" style={{ backgroundImage: `url(${pokemon.sprites.front_default})` }} />
+        <div className="pokemon-image" style={{ backgroundImage: `url(${pokemon.sprites.front_default})` }}/>
         <div className="pokemon-info">
           <div className="pokemon-name">{pokemon.name}</div>
           <div className="pokemon-stats" data-testid="stats">
@@ -51,8 +51,8 @@ const PokemonPage = ({ previous, next }) => {
             </table>
           </div>
           <div className="pokemon-abilities">
-            {normalAbility && <PokemonAbility abilityName={formatName(normalAbility.ability.name)} />}
-            {hiddenAbility && <PokemonAbility abilityName={formatName(hiddenAbility.ability.name)} />}
+            {normalAbility && <PokemonAbility abilityName={formatName(normalAbility.ability.name)}/>}
+            {hiddenAbility && <PokemonAbility abilityName={formatName(hiddenAbility.ability.name)}/>}
           </div>
         </div>
       </div>
