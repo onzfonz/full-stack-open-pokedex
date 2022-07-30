@@ -38,5 +38,5 @@ jobs:
           heroku_email: "ojimenez@pacific.edu"
           healthcheck: "https://nameless-stream-17691.herokuapp.com/health"
           checkstring: "ok"
-          delay: 5
+          delay: 7
           rollbackonhealthcheckfailed: true
