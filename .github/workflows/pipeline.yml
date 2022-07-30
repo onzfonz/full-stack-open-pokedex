@@ -30,10 +30,24 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
+  tag_release:
+    needs: [ simple_deployment_pipeline ]
+    runs-on: ubuntu-20.04
+    steps:
       - name: deploy to heroku
+        if: ${{ github.event_name == 'push' }}
         uses: AkhileshNS/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "nameless-stream-17691"
           heroku_email: "ojimenez@pacific.edu"
-          
+          healthcheck: "https://nameless-stream-17691.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 7
+          rollbackonhealthcheckfailed: true
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' }}
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
