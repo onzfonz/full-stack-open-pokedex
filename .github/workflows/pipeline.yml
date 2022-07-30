@@ -36,4 +36,7 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "nameless-stream-17691"
           heroku_email: "ojimenez@pacific.edu"
-          
+          healthcheck: "https://nameless-stream-17691.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 5
+          rollbackonhealthcheckfailed: true
