@@ -6,7 +6,7 @@ on:
       - partd
 
 jobs:
-  health check:
+  healthcheck:
     runs-on: ubuntu-20.04
     steps:
       - name: Check the deployed service URL
@@ -22,7 +22,7 @@ jobs:
           retry-delay: 5s # Optional, only applicable to max-attempts > 1
           # Retry all errors, including 404. This option might trigger curl upgrade.
           retry-all: false # Optional, defaults to "false"
-  echo obj:
+  echoobj:
     runs-on: ubuntu-20.04
     steps:
       - name: Echo github obj
