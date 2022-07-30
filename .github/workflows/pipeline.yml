@@ -35,6 +35,9 @@ jobs:
     needs: [ simple_deployment_pipeline ]
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: deploy to heroku
         if: ${{ github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), 'skip')}}
         uses: AkhileshNS/heroku-deploy@v3.12.12
