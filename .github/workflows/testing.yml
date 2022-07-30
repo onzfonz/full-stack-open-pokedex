@@ -25,5 +25,5 @@ jobs:
       - name: checking commits for the word skip
         env:
           HAS_A_SKIP: ${{'has a skip'}}
-        if: ${{contains(github.event.commits.*.message, 'skip') }}
+        if: ${{contains(toJson(github.event.commits.*.message), 'skip') }}
         run: echo "$HAS_A_SKIP"
