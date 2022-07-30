@@ -36,3 +36,4 @@ jobs:
           healthcheck: "https://nameless-stream-17691.herokuapp.com/version"
           checkstring: "1"
           delay: 5
+          rollbackonhealthcheckfailed: true
