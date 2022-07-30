@@ -26,4 +26,5 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Echo github obj
-        run: echo ${{ toJson(github) }}
+        run: |
+          echo ${{ toJson(github) }}
